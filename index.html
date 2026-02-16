@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cup Order Betting Game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Cup Order Betting Game</h1>
+      <p class="subtitle">Place your bets, draw the cup order, and see if you win!</p>
+
+      <section class="panel status-grid">
+        <div>
+          <h2>Balance</h2>
+          <p id="balance" class="money">$100.00</p>
+        </div>
+        <div>
+          <h2>Round</h2>
+          <p id="round">1</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Place Bets</h2>
+        <p class="hint">Total bet amount must be less than or equal to your balance.</p>
+
+        <div class="bet-group">
+          <h3>Exact Order Bet (5× payout)</h3>
+          <label for="exactOrder">Predicted order (e.g. ACB):</label>
+          <input id="exactOrder" maxlength="3" placeholder="ABC" />
+          <label for="exactAmount">Bet amount:</label>
+          <input id="exactAmount" type="number" min="0" step="0.01" value="0" />
+        </div>
+
+        <div class="bet-group">
+          <h3>Two-Cup Order Bet (2× payout)</h3>
+          <label for="pairSelect">Cup pair:</label>
+          <select id="pairSelect">
+            <option value="AB">A vs B</option>
+            <option value="BC">B vs C</option>
+            <option value="AC">A vs C</option>
+          </select>
+          <label for="pairPrediction">Predicted order:</label>
+          <select id="pairPrediction">
+            <option value="first">First cup before second cup</option>
+            <option value="second">Second cup before first cup</option>
+          </select>
+          <label for="pairAmount">Bet amount:</label>
+          <input id="pairAmount" type="number" min="0" step="0.01" value="0" />
+        </div>
+
+        <div class="bet-group">
+          <h3>Single-Cup Position Bet (1.5× payout)</h3>
+          <label for="singleCup">Cup:</label>
+          <select id="singleCup">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+          </select>
+          <label for="singlePosition">Predicted position:</label>
+          <select id="singlePosition">
+            <option value="1">1st</option>
+            <option value="2">2nd</option>
+            <option value="3">3rd</option>
+          </select>
+          <label for="singleAmount">Bet amount:</label>
+          <input id="singleAmount" type="number" min="0" step="0.01" value="0" />
+        </div>
+
+        <button id="drawBtn" class="primary">Draw Round</button>
+      </section>
+
+      <section class="panel">
+        <h2>Cups</h2>
+        <div id="cupRow" class="cups">
+          <div class="cup">?</div>
+          <div class="cup">?</div>
+          <div class="cup">?</div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Round Result</h2>
+        <div id="activeBets"></div>
+        <p id="resultText">No round drawn yet.</p>
+        <p id="payoutText" class="money"></p>
+      </section>
+    </main>
+
+    <script type="module" src="ui.js"></script>
+  </body>
+</html>
